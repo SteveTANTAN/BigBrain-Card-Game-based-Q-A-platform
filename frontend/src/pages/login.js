@@ -6,7 +6,7 @@ const BASE_URL = 'http://localhost:5005';
 const Login = () => {
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
-  const [errorout, setErrorout] = React.useState(false);
+  const [errorout, setErrorout] = React.useState('');
   const [login, setlogin] = React.useState(false);
 
   if (document.cookie || login) {
@@ -32,8 +32,9 @@ const Login = () => {
           setlogin(true);
         });
       } else if (data.status === 400) {
-        setErrorout(true);
-        document.getElementById('error_out').innerText = 'Your password and email are not mactching'
+        data.json().then(result => {
+          setErrorout(result.error)
+        });
       }
     }).catch((error) => {
       console.error('Error:', error);
@@ -44,10 +45,10 @@ const Login = () => {
     <div className='App'>
     <header className = 'App-header'>
       <div>
-      {errorout
+      {errorout !== ''
         ? (<div className = 'error_pop'>
-        <button id = 'error_close' onClick={() => { setErrorout(false) }}> ❌</button>
-        <div id = 'error_out'> </div>
+        <button id = 'error_close' onClick={() => { setErrorout('') }}> ❌</button>
+        <div id = 'error_out'> {errorout}</div>
         </div>)
         : null
       }

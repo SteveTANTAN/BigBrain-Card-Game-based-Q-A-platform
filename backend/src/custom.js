@@ -13,9 +13,28 @@ export const quizQuestionPublicReturn = question => {
  the correct answers (minimum 1).
 */
 export const quizQuestionGetCorrectAnswers = question => {
-  return [
-    123,
-  ]; // For a single answer
+  var anser = [];
+  const questionChoice = question.answers
+  const questiontype = question.Multi
+  const questionanswer = question.correctAnswer
+
+  questionChoice.map((item, idx) => {
+    if (questiontype === 'true') {
+      questionanswer.map((ans) => {
+        if (ans.value === item) {
+          anser.push(idx);
+        }
+        console.log(ans.value)
+        return ans;
+      })
+    } else {
+      if (questionanswer.value === item) {
+        anser.push(idx);
+      }
+    }
+    return item;
+  })
+  return anser // For a single answer
 };
 
 /*
@@ -23,11 +42,13 @@ export const quizQuestionGetCorrectAnswers = question => {
  all of the answers, correct or incorrect.
 */
 export const quizQuestionGetAnswers = question => {
-  return [
-    123,
-    456,
-    678,
-  ]; // For a single answer
+  var anser = [];
+  const questionChoice = question.answers
+  questionChoice.map((item, idx) => {
+    anser.push(idx);
+    return item;
+  })
+  return anser;
 };
 
 /*

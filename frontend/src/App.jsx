@@ -16,38 +16,9 @@ import GameEdit from './pages/Game_compoents/gameedit';
 import QuestionEdit from './pages/Game_compoents/question_edit';
 import NewQuestion from './pages/Game_compoents/newQuestion';
 import Joingame from './pages/joininpage';
-
-// import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
-
-// import axios from 'axios';
-
-/* import JoinGame from "./components/JoinGame/JoinGame";
-import WaitingRoom from "./components/WaitingRoom/WaitingRoom";
-import PlayGame from "./components/PlayGame/PlayGame";
-import PostGame from "./components/PostGame/PostGame";
-
-import Login from "./components/Login/Login";
-import SignUp from "./components/SignUp/SignUp";
-import Dashboard from "./components/Dashboard/Dashboard";
-import CreateQuiz from "./components/CreateQuiz/CreateQuiz";
-import Scoreboard from "./components/Scoreboard/Scoreboard"; */
-
-/* import { ActionCableProvider } from 'react-actioncable-provider';
-import { API_WS_ROOT } from './constants';
-
-export const API_ROOT = "https://kahootz.herokuapp.com";
-export const API_WS_ROOT = "ws://localhost:3000/cable";
-export const HEADERS = {
-  "Content-Type": "application/json",
-  Accept: "application/json"
-}; */
-// const BASE_URL = 'http://localhost:5005';
-/* const myAxios = {
-  post: (path, ...args) => axios.post(BASE_URL + path, ...args),
-  get: (path, ...args) => axios.get(BASE_URL + path, ...args),
-  put: (path, ...args) => axios.put(BASE_URL + path, ...args),
-  delete: (path, ...args) => axios.delete(BASE_URL + path, ...args),
-}; */
+import Backend from './pages/backend';
+import Waiting from './pages/waitingRoom';
+import Gameplay from './pages/game_player';
 export default function App () {
   return (
     <Router>
@@ -90,26 +61,22 @@ export default function App () {
           <Route exact path="/joinGame">
             <Joingame/>
           </Route>
-          <Route
-            exact
-            path="/waiting-room"
-          />
-          <Route
-            exact
-            path="/game/:id"
-          />
-          <Route
-            exact
-            path="/game/:id/scoreboard"
-          />
 
-          <Route
-            exact
-            path="/post-game"
-          />
-          <Route exact path="/signup" />
-
-          <Route exact path="/create-quiz" />
+          <Route exact path="/waiting_room/:player_id">
+            <Waiting/>
+          </Route>
+          <Route exact path="/backend/:q_id/:sessionid">
+            <Backend/>
+          </Route>
+          <Route exact path="/game/:player_id">
+            <Gameplay/>
+          </Route>
+          <Route exact path="/gamefinished">
+            <Gamefinished/>
+          </Route>
+          <Route exact path="/gameresult">
+            <Gameresult/>
+          </Route>
         </Switch>
       </div>
     </Router>
@@ -120,7 +87,34 @@ function Joinnew () {
   return (
     <div className='App'>
       <header className = 'App-header'>
+        <h3>
+        <Link to="/joinGame" >Have session ID? Click here to play the game!</Link>
+        </h3>
+        <h3>
         <Link to="/login" >Have account? Click here to login!</Link>
+        </h3>
+      </header>
+    </div>
+  );
+}
+function Gamefinished () {
+  return (
+    <div className='App'>
+      <header className = 'App-header'>
+        <h1>Game closed</h1>
+      <li>Game result for player(not finish yet)</li>
+
+      </header>
+    </div>
+  );
+}
+function Gameresult () {
+  return (
+    <div className='App'>
+      <header className = 'App-header'>
+      <h1>Game closed</h1>
+      <li>Game result for mangement (not finish yet)</li>
+
       </header>
     </div>
   );

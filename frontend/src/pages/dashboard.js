@@ -60,10 +60,22 @@ const Dashboard = () => {
       console.error('Error:', error);
     })
   }, []);
-  function logout () {
+  async function logout () {
     document.cookie = 'Token=; expires = Thu, 01 Jan 2020 00:00:00 UTC';
     console.log(document.cookie);
+    const response = await fetch(`${BASE_URL}/admin/auth/logout`, {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        Authorization: 'Bearer ' + localStorage.getItem('token'),
+      },
+    });
+    const result = await response.json()
+    // const oupt = await result
+    // const sessionID = await oupt
+    console.log(result)
   }
+
   function updatechoice (index, value) {
     const newQuestionChoice = [...theArray];
     newQuestionChoice[index].active = value;
@@ -185,7 +197,14 @@ const Dashboard = () => {
             </div>
             <div className = 'center_style'>
             { item.active > 0
-              ? <center><button className = 'button_style' onClick= {end}>Game End</button></center>
+              ? <div>
+                <center>
+                <button className = 'button_style' onClick= {end}>Game End</button>
+                </center>
+                <center>
+                <Link to = {`/backend/${theArray[idx].q_id}/${theArray[idx].active}`} className = 'button_style' style = {{ background: 'red', fontWeight: 'bold' }}>Showing game details </Link>
+                </center>
+                </div>
               : <center><button className = 'button_style'style = {{ backgroundColor: 'red' }} onClick= {start}>Game Start</button></center>}
           </div>
           </div>

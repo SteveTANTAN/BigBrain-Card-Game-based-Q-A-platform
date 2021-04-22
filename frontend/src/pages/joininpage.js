@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { Redirect, useParams } from 'react-router-dom';
 import React from 'react';
 import '../App.css';
 const BASE_URL = 'http://localhost:5005';
@@ -13,9 +13,9 @@ const Joingame = () => {
   const [playerid, setplayerid] = React.useState('');
 
   if (login) {
-    /* return (<Redirect to="/dashboard"/>) */
-    console.log(playerid)
+    return <Redirect to = {`/waiting_room/${playerid}`} />;
   }
+
   function submit () {
     let url;
     if (params.sessionID === undefined) {

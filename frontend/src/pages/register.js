@@ -11,7 +11,7 @@ const Register = () => {
   const [password, setPassword] = React.useState('');
   const [name, setName] = React.useState('');
   const [loggedIn, setLoggedIn] = React.useState(false);
-  const [errorout, setErrorout] = React.useState(false);
+  const [errorout, setErrorout] = React.useState('');
 
   function submit () {
     const loginPeople = {
@@ -35,8 +35,9 @@ const Register = () => {
         });
         setLoggedIn(true);
       } else if (data.status === 400) {
-        setErrorout(true);
-        document.getElementById('error_out').innerText = 'This email has been registed, please change a new one'
+        data.json().then(result => {
+          setErrorout(result.error)
+        });
       }
     }).catch((error) => {
       console.error('Error:', error);
@@ -51,10 +52,10 @@ const Register = () => {
     <div className='App'>
       <header className = 'App-header'>
         <div>
-          {errorout
+          {errorout !== ''
             ? (<div className = 'error_pop'>
-            <button id = 'error_close' onClick={() => { setErrorout(false) }}> ❌</button>
-            <div id = 'error_out'> </div>
+            <button id = 'error_close' onClick={() => { setErrorout('') }}> ❌</button>
+            <div id = 'error_out'> {errorout}</div>
             </div>)
             : null
           }

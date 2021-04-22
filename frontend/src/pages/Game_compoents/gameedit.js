@@ -38,9 +38,20 @@ const GameEdit = () => {
       console.error('Error:', error);
     })
   }, []);
-  function logout () {
+  async function logout () {
     document.cookie = 'Token=; expires = Thu, 01 Jan 2020 00:00:00 UTC';
     console.log(document.cookie);
+    const response = await fetch(`${BASE_URL}/admin/auth/logout`, {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        Authorization: 'Bearer ' + localStorage.getItem('token'),
+      },
+    });
+    const result = await response.json()
+    // const oupt = await result
+    // const sessionID = await oupt
+    console.log(result)
   }
 
   if (!document.cookie) {
@@ -132,8 +143,7 @@ const GameEdit = () => {
       fetch(`${BASE_URL}/admin/quiz/${params.quizid}`, {
         method: 'PUT',
         headers: {
-          accept: 'application/json',
-          'Content-Type': 'application/json',
+          Accept: 'application/json',
           Authorization: 'Bearer ' + localStorage.getItem('token'),
         },
         body: JSON.stringify(loginPeople),
