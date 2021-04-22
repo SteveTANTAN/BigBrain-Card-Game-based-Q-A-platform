@@ -92,7 +92,7 @@ const Dashboard = () => {
     const result = await response.result
     console.log(result);
     setErrorout(<div><p>Would you like to view the results?</p>
-      <Link to = '/'
+      <Link to = '/gameresult'
       className = 'button_style'
     >
       ✔
