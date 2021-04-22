@@ -202,7 +202,8 @@ const Dashboard = () => {
                 <button className = 'button_style' onClick= {end}>Game End</button>
                 </center>
                 <center>
-                <Link to = {`/backend/${theArray[idx].q_id}/${theArray[idx].active}`} className = 'button_style' style = {{ background: 'red', fontWeight: 'bold' }}>Showing game details </Link>
+                <Link to = {`/backend/${theArray[idx].q_id}/${theArray[idx].active}`}
+                className = 'button_style' style = {{ background: 'red', fontWeight: 'bold' }}>Showing game details </Link>
                 </center>
                 </div>
               : <center><button className = 'button_style'style = {{ backgroundColor: 'red' }} onClick= {start}>Game Start</button></center>}

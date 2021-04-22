@@ -4,6 +4,7 @@ import '../App.css';
 const BASE_URL = 'http://localhost:5005';
 
 const Login = () => {
+  // decleration
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
   const [errorout, setErrorout] = React.useState('');
@@ -12,6 +13,7 @@ const Login = () => {
   if (document.cookie || login) {
     return (<Redirect to="/dashboard"/>)
   }
+  // some fetching used here
   function submit () {
     const loginPeople = {
       email: email,

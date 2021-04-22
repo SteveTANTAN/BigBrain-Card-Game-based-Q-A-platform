@@ -6,11 +6,13 @@ const BASE_URL = 'http://localhost:5005';
 const Gameplay = () => {
   const params = useParams();
   console.log(params)
+  // decleration
   const [errorout, setErrorout] = React.useState('');
   const [quizinfo, setQuizinfo] = React.useState({});
   const [questionChoice, setQuestionChoice] = React.useState(['', '']);
   const [questionanswer, setquestionanswer] = React.useState([{}]);
   const [questiontype, setquestiontype] = React.useState('true');
+  // window auto matic freshing
   setInterval(() => {
     window.location.reload();
   }, 15000);
@@ -35,10 +37,6 @@ const Gameplay = () => {
       return <Redirect to = "/gamefinished"/>;
     }
 
-    // const oupt = await result
-    // const sessionID = await oupt
-    console.log(params.player_id)
-    console.log(result.question)
     setQuizinfo(oupt)
     setQuestionChoice(oupt.answers)
     setquestiontype(oupt.Multi)
@@ -48,21 +46,7 @@ const Gameplay = () => {
   React.useEffect(() => {
     getstatus();
   }, []);
-
-  /* async function nextQ () {
-    const response = await fetch(`${BASE_URL}/admin/quiz/${params.q_id}/advance`, {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        Authorization: 'Bearer ' + localStorage.getItem('token'),
-      },
-    });
-    const result = await response.json()
-    // const oupt = await result
-    // const sessionID = await oupt
-    console.log(result)
-    window.location.reload();
-  } */
+  // fecthing for answer showing
   async function showanswer () {
     const response = await fetch(`${BASE_URL}/play/${params.player_id}/answer`, {
       method: 'GET',
@@ -79,7 +63,7 @@ const Gameplay = () => {
       <div> {QuestionPart1(result1)} </div>
     )
   }
-
+  // question section showing
   function QuestionPart (item) {
     return (item.map((choice, idx) =>
       <div key={idx}>
@@ -92,6 +76,7 @@ const Gameplay = () => {
       </div>
     ));
   }
+  // question section showing
   function QuestionPart1 (item) {
     return (item.map((choice, idx) =>
       <div key={idx}>
@@ -104,7 +89,7 @@ const Gameplay = () => {
       </div>
     ));
   }
-
+  // showing the each quiz card
   function QuizCARD () {
     if (quizinfo !== undefined && quizinfo.answers !== undefined) {
       return (
@@ -147,6 +132,7 @@ const Gameplay = () => {
     }
     return <div>Game no start yet</div>;
   }
+  // function for saving
   function save () {
     console.log(questionanswer)
     console.log(questionChoice)
@@ -176,6 +162,7 @@ const Gameplay = () => {
     if (loginPeople === undefined || loginPeople.length === 0) {
       console.log('Answers must be provided');
     }
+    // fetching
     fetch(`${BASE_URL}/play/${params.player_id}/answer`, {
       method: 'PUT',
       headers: {
@@ -202,19 +189,6 @@ const Gameplay = () => {
     }).catch((error) => {
       console.error('Error:', error);
     })
-    /* const response = await fetch(`${BASE_URL}/play/${params.player_id}/answer`, {
-      method: 'PUT',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-
-      },
-      body: JSON.stringify(loginPeople),
-    });
-    const result = await response.json()
-    console.log(result);
-    console.log(JSON.stringify(loginPeople));
-    */
   }
   if (quizinfo === null) {
     return <h2>Loading posts...</h2>;

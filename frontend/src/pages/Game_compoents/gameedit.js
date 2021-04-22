@@ -1,7 +1,7 @@
 import { Link, Redirect, useParams } from 'react-router-dom';
 import React from 'react';
 import '../../App.css';
-import fileToDataUrl from '../temp';
+import fileToDataUrl from '../photoUpload';
 
 const BASE_URL = 'http://localhost:5005';
 const GameEdit = () => {

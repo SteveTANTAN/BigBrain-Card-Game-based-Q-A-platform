@@ -8,7 +8,7 @@ const Waiting = () => {
   console.log(params.sessionID)
   const [errorout, setErrorout] = React.useState('');
   const [correct, setcorrect] = React.useState(false);
-
+  // automaticlly update for fetching
   var intervalID = setInterval(() => {
     getstatus();
   }, 5000);
@@ -16,6 +16,7 @@ const Waiting = () => {
     clearInterval(intervalID);
     return <Redirect to = {`/game/${params.player_id}`} />;
   }
+  // fetch ing function
   async function getstatus () {
     const response = await fetch(`${BASE_URL}/play/${params.player_id}/status`, {
       method: 'GET',
@@ -24,19 +25,10 @@ const Waiting = () => {
       },
     });
     const result = await response.json()
-    // const oupt = await result
-    // const sessionID = await oupt
     console.log(params.player_id)
     console.log(result.started)
     if (result.started) {
       setcorrect(true)
-      /* setErrorout(
-        <div>
-          <div>Game stared! click button to join game </div>
-          <br/>
-          <Link to = {`/game/${params.player_id}`} className = 'button_style'> Join in</Link>
-        </div>
-      ) */
     }
   }
 
