@@ -21,7 +21,9 @@ Then in the dashboard page:
 1.	Logout button will always showing on the top.
 2.	You can post your new game one the top by typing question and click post button.
 3.	Then the each card means one game, and it will showing some changes when your mouse hover it to help you distinguish the game, as well as the button.
-4.	 In each game card:
+
+
+In each game card:
 1.	Delete button: deleting the game here.
 2.	Edit button: after clicking it, tranasfer to a new page ’path=gameEdit’ for showing the whole details for this game;
 3.	Game start or game closed button it will transfer automatically;

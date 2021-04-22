@@ -32,8 +32,8 @@ After click question EDIT button:
 1.	‘DELETE THIS QUESTION’ button Here you can able to delete this question
 2.	Select time, points, question and correct answer by selector
 3.	‘add choice’ button here you are able to add new choice , if the choice number is more than 6, this add choice button will disappear,
-Similarly, one the right of choice the ‘error’ button used for deleting the choice, 
-if the choice number is more than 6, this delete choice button will disappear.
+    Similarly, one the right of choice the ‘error’ button used for deleting the choice, 
+    if the choice number is more than 6, this delete choice button will disappear.
 4.	Then the select image file is able used for update image.
 5.	After editing click submit and save it.
 
