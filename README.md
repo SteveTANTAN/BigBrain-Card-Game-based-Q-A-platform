@@ -1,6 +1,8 @@
 ## BigBrain Card Game-based Q&A platform | UNSW Front-end Development Apr. 2021
 
-A personal  Front-end Development by using ReactJS
+**A personal  Front-end Development by using ReactJS**
+
+
 • Contributed to the front-end design, spearheading the development of administrator and player layers based
 on O&O design principles.
 
