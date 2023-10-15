@@ -1,20 +1,11 @@
-# Assessment 3 - ReactJS: BigBrain
+BigBrain Card Game-based Q&A platform | UNSW Front-end Development Apr. 2021
 
-1. Background & Motivation
-2. The Task (Frontend)
-3. The Support (Backend)
-4. Constraints & Assumptions
-5. Teamwork
-6. Marking Criteria
-7. Originality of Work
-8. Submission
-9. Late Submission Policy
-
-## 0. Change Log
-
-* 02/04: Removed line "There is no lowered expectations for students working on their own - you will be assessed the same as the pairs"
-* 02/04: Increaseing 2.1, 2.2, 2.3, 2.4 secion worths to match marking criteria
-* 03/04: Due date extend to 22/04 (24 hours)
+A personal  Front-end Development by using ReactJS
+• Contributed to the front-end design, spearheading the development of administrator and player layers based
+on O&O design principles.
+• Implemented the frontend functions for administrator authentication, creating and editing games, starting/
+stopping the game, invitation room, answering within the countdown, and result ranking.
+• Finished all the frontend functions within 3 weeks via React in JavaScript and conducted tests
 
 ## 1. Background & Motivation
 
