@@ -1,10 +1,12 @@
-**BigBrain Card Game-based Q&A platform | UNSW Front-end Development Apr. 2021**
+## BigBrain Card Game-based Q&A platform | UNSW Front-end Development Apr. 2021
 
 A personal  Front-end Development by using ReactJS
 • Contributed to the front-end design, spearheading the development of administrator and player layers based
 on O&O design principles.
+
 • Implemented the frontend functions for administrator authentication, creating and editing games, starting/
 stopping the game, invitation room, answering within the countdown, and result ranking.
+
 • Finished all the frontend functions within 3 weeks via React in JavaScript and conducted tests
 
 ## 1. Background & Motivation
